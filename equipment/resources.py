@@ -1,15 +1,20 @@
 
 
 # 95 resource cards
-# 19 Ore cards
-# 19 Grain cards
-# 19 Lumber cards
-# 19 Wool cards
-# 19 Brick cards
+# max 19 Ore cards 
+# max 19 Grain cards
+# max 19 Lumber cards
+# max 19 Wool cards
+# max 19 Brick cards
+
+# types = ["Ore","Grain","Lumber","Wool","Brick"]
+# owner = ["Bank", "Player1", "Player2"]
 
 class ReasourceCard:
-    def __init__(self) -> None:
-        pass    
+    def __init__(self, type, owner):
+        self.type = type
+    
+    
     
     
     
