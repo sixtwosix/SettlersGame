@@ -23,20 +23,43 @@ class Player():
         Remove resource from players hand and return card to bank/player
         '''
         if(resourceCard != None):
-            if(self.resourceCards.index(resourceCard) == -1):                
-                # resource card not in players hand
-                return None
-            else :
-                # player has resource card
-                self.resourceCards.pop(self.resourceCards.index(resourceCard))
+            for i in range(len(self.resourceCards)):
+                if(self.resourceCards[i].getType() == resourceCard.getType()):
+                    # player has resource card
+                    return self.resourceCards.pop(i)        
+            # resource card not in players hand
+            return None
+                
         
     def viewResourceCards(self):
         '''
         View current cards in players hand
         '''
         for card in self.resourceCards:
-            print(card)
+            print(card.getType())
             
             
-# if __name__ == "__main__":
+if __name__ == "__main__":
+    lumber = ResourceDeck("Lumber")
+    ore = ResourceDeck("Ore")
+    grain = ResourceDeck("Grain")
+    wool = ResourceDeck("Wool")
+    brick = ResourceDeck("Brick")
+    
+    player1 = Player("Henco")
+    player1.addResource(lumber.pickupResource())
+    player1.addResource(ore.pickupResource())
+    player1.addResource(grain.pickupResource())
+    player1.addResource(wool.pickupResource())
+    player1.addResource(brick.pickupResource())
+    
+    player1.viewResourceCards()
+    
+    lumber.returnResource(player1.spendResource(ReasourceCard("Lumber")))
+    brick.returnResource(player1.spendResource(ReasourceCard("Brick")))
+    
+    print("------------------------------------------------")
+    
+    player1.viewResourceCards()
+    
     
